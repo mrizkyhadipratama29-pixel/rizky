@@ -1,0 +1,246 @@
+:root {
+  --ink: #1e2b33;
+  --ink-soft: #55656d;
+  --teal: #1388dc;
+  --teal-deep: #000000;
+  --sage: #dbe7e3;
+  --mustard: #d9a441;
+  --page: #e4e9e8;
+  --card: #fafbfa;
+  --line: #d3dcd9;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--page);
+  color: var(--ink);
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--card);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(30, 43, 51, 0.08), 0 18px 40px -18px rgba(35, 74, 79, 0.45);
+}
+
+.card-band {
+  height: 112px;
+  background: var(--teal);
+}
+
+.card-body {
+  padding: 0 28px 28px;
+}
+
+.avatar {
+  width: 88px;
+  height: 88px;
+  margin-top: -44px;
+  display: grid;
+  place-items: center;
+  background: var(--mustard);
+  color: var(--ink);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 24px;
+  border: 5px solid var(--card);
+}
+
+.identity {
+  margin-top: 16px;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.handle {
+  margin-top: 2px;
+  font-size: 14px;
+  color: var(--teal);
+  font-weight: 500;
+}
+
+.role {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.bio {
+  margin-top: 16px;
+  font-size: 14.5px;
+  color: var(--ink);
+  max-width: 34ch;
+}
+
+.stats {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 22px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.stats li {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.stats li + li {
+  padding-left: 16px;
+  border-left: 1px solid var(--line);
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+.skills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.skills li {
+  padding: 4px 12px;
+  background: var(--sage);
+  color: var(--teal-deep);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 999px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.btn {
+  flex: 1;
+  padding: 11px 16px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--mustard);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--teal);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--teal-deep);
+}
+
+.btn-primary[aria-pressed="true"] {
+  background: transparent;
+  color: var(--teal);
+  border-color: var(--teal);
+}
+
+.btn-primary[aria-pressed="true"]:hover {
+  background: var(--sage);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.btn-ghost:hover {
+  border-color: var(--ink-soft);
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  padding: 10px 18px;
+  background: var(--ink);
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 500;
+  border-radius: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 380px) {
+  .card-body {
+    padding: 0 20px 22px;
+  }
+
+  .stats li + li {
+    padding-left: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .toast {
+    transition: none;
+  }
+}
+a.btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+img.avatar {
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+}
